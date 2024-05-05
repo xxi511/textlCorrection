@@ -1,3 +1,11 @@
+// Called when the user clicks on the page action.
+chrome.action.onClicked.addListener(function(tab) {
+    chrome.scripting.executeScript({
+        target: {tabId: tab.id, allFrames: true},
+        files: ["execute.js"],
+    });
+});
+
 // When the extension is installed or upgraded ...
 chrome.runtime.onInstalled.addListener(removeOldRule);
 
@@ -13,7 +21,7 @@ function setNewRule() {
             conditions: [
                 new chrome.declarativeContent.PageStateMatcher({
                     pageUrl: {
-                        hostEquals: "woodo.epizy.com",
+                        hostEquals: "woodo.club",
                         urlContains: "action",
                     },
                 }),
@@ -24,9 +32,4 @@ function setNewRule() {
     ]);
 }
 
-// Called when the user clicks on the page action.
-chrome.pageAction.onClicked.addListener(function(tab) {
-    chrome.tabs.executeScript({
-        file: "execute.js",
-    });
-});
+

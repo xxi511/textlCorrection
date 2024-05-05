@@ -1,7 +1,7 @@
 edit();
 
 function edit() {
-    document.getElementById("e_switchercheck").click();
+    // document.getElementById("e_switchercheck").click();
     let textArea = document.getElementsByName("message")[0];
     if (textArea) {
         let lines = articleSplit(textArea.value);
